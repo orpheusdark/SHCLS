@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('01.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for better readability */
+        }
+
+        .login-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent container */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #3a9ad9;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+
+        .tab-buttons button.active {
+            background-color: #3a9ad9;
+            color: #fff;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #3a9ad9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #338bb7;
+        }
+
+        .options {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .options a {
+            color: #3a9ad9;
+            text-decoration: none;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="login-container">
+        <h1>HealthAxis Login</h1>
+        <div class="tab-buttons">
+            <button class="active" id="patient-tab">Patient Login</button>
+            <button id="staff-tab">Staff Login</button>
+        </div>
+
+        <!-- Patient Login Form -->
+        <form id="patient-form" class="login-form active">
+            <input type="text" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login as Patient</button>
+        </form>
+
+        <!-- Staff Login Form -->
+        <form id="staff-form" class="login-form">
+            <input type="text" placeholder="Staff ID" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login as Staff</button>
+        </form>
+
+        <div class="options">
+            <a href="forgot-pass.html">Forgot Password?</a><br>
+            <a href="#">Admin Access</a><br>
+            <a href="registration.html">New User? Sign Up for Patients</a>
+            
+        </div>
+
+        <div class="footer">
+            &copy; 2024 HealthAxis. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        const patientTab = document.getElementById('patient-tab');
+        const staffTab = document.getElementById('staff-tab');
+        const patientForm = document.getElementById('patient-form');
+        const staffForm = document.getElementById('staff-form');
+
+        patientTab.addEventListener('click', () => {
+            patientForm.classList.add('active');
+            staffForm.classList.remove('active');
+            patientTab.classList.add('active');
+            staffTab.classList.remove('active');
+        });
+
+        staffTab.addEventListener('click', () => {
+            staffForm.classList.add('active');
+            patientForm.classList.remove('active');
+            staffTab.classList.add('active');
+            patientTab.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>

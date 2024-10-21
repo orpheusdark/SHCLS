@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAxis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('resize.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            opacity: 1;
+            transition: opacity 1s ease-in-out; /* Smooth fade-out animation */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        .get-started-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            background-color: #3a9ad9;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .get-started-btn:hover {
+            background-color: #338bb7;
+            transform: scale(1.05);
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+    <div class="content" id="content">
+        <h1>Welcome to HealthAxis</h1>
+        <p>Your guide to better healthcare.</p>
+        <button class="get-started-btn" onclick="triggerRedirect()">Get Started</button>
+    </div>
+
+    <script>
+        // Function to handle redirection with fade-out effect
+        function triggerRedirect() {
+            const content = document.getElementById('content');
+            content.classList.add('fade-out'); // Add fade-out animation class
+            setTimeout(() => {
+                window.location.href = 'home.html'; // Redirect after animation
+            }, 1000); // Delay to match the fade-out animation duration (1s)
+        }
+
+        // Auto-redirect after 5 seconds with fade-out animation
+        setTimeout(() => {
+            triggerRedirect();
+        }, 5000); // Delay set to 5000 ms (5 seconds)
+    </script>
+
+</body>
+</html>

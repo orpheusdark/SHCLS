@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background1.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .registration-container {
+            background-color: rgba(255, 255, 255, 0.5); /* Adjust the opacity to 0.5 for more translucency */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #007bff; /* Hospital blue */
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 10px;
+            background-color: #007bff; /* Hospital blue */
+            width: 0;
+            border-radius: 5px;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step.active {
+            font-weight: bold;
+            color: #007bff; /* Hospital blue */
+        }
+
+        .step.completed {
+            color: #28a745; /* Green for completed steps */
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #007bff; /* Hospital blue border */
+            border-radius: 5px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            border-color: #0056b3; /* Darker blue on focus */
+            outline: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff; /* Hospital blue */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            flex: 1; /* This allows buttons to grow equally */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registration-container">
+        <h1>HealthAxis Registration</h1>
+        
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+        
+        <div class="step-indicator">
+            <div class="step active">User Type</div>
+            <div class="step">Personal Info</div>
+            <div class="step">Address Info</div>
+            <div class="step">Role Info</div>
+            <div class="step">Login Details</div>
+        </div>
+
+        <form id="registration-form">
+            <!-- Step 1: User Type Selection -->
+            <div class="form-step active">
+                <div class="form-group">
+                    <label for="user-type">User Type</label>
+                    <select id="user-type" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="staff">Hospital Staff</option>
+                        <option value="paramedic">Paramedic</option>
+                        <option value="ambulance">Ambulance Driver</option>
+                        <option value="pharmacy">Pharmacy</option>
+                        <option value="patient">Patient</option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Personal Information -->
+            <div class="form-step">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" placeholder="Date of Birth" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="" disabled selected>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Address Information -->
+            <div class="form-step">
+                <div class="form-group">
+                    <input type="text" placeholder="Street Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="City" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="" disabled selected>Select State</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Puducherry">Puducherry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Zip Code" required>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Role Information -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="role">Role in the organization</label>
+                    <input type="text" id="role" placeholder="Your Role" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" id="department" placeholder="Department" required>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Login Details -->
+            <div class="form-step">
+                <div class="form-group">
+                    <input type="email" placeholder="Create Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Create Password" required>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="footer">
+            &copy; 2024 HealthAxis. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        const formSteps = document.querySelectorAll(".form-step");
+        const progress = document.getElementById("progress");
+        let currentStep = 0;
+
+        function updateStep() {
+            formSteps.forEach((step, index) => {
+                step.classList.toggle("active", index === currentStep);
+            });
+            const progressPercentage = ((currentStep + 1) / formSteps.length) * 100;
+            progress.style.width = `${progressPercentage}%`;
+        }
+
+        function nextStep() {
+            if (currentStep < formSteps.length - 1) {
+                currentStep++;
+                updateStep();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                updateStep();
+            }
+        }
+    </script>
+
+</body>
+</html>

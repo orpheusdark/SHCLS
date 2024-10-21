@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('03.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+           
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .forgot-password-container {
+    background-color: rgba(255, 255, 255, 0.8); /* 80% opacity white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(190, 183, 183, 0.5); /* Shadow stays the same */
+    width: 350px;
+    text-align: center;
+}
+
+
+        h1 {
+            color: #3a9ad9;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], select {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 80%;
+            padding: 10px;
+            background-color: #3a9ad9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #338bb7;
+        }
+
+        .options {
+            width: auto;
+            padding: 10px;
+            margin: 10px 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .options a {
+            color: #3a9ad9;
+            text-decoration: none;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="forgot-password-container">
+        <h1>Forgot Password</h1>
+        <p>Enter your email address or phone number to verify your identity.</p>
+
+        <!-- Verification Step -->
+        <form id="verification-form">
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Phone Number (optional)">
+            <select required>
+                <option value="" disabled selected>Select a Security Question</option>
+                <option value="1">What is your mother's maiden name?</option>
+                <option value="2">What was your first pet's name?</option>
+                <option value="3">What was the name of your elementary school?</option>
+            </select>
+            <input type="text" placeholder="Answer" required>
+            <button type="submit">Verify Identity</button>
+        </form>
+
+        <!-- Password Reset Step -->
+        <form id="reset-password-form" style="display: none;">
+            <p>Verification successful! Please enter your new password below.</p>
+            <input type="password" placeholder="New Password" required>
+            <input type="password" placeholder="Confirm New Password" required>
+            <button type="submit">Reset Password</button>
+        </form>
+
+        <div class="options">
+            <a href="login.html">Back to Login</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 HealthAxis. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        const verificationForm = document.getElementById('verification-form');
+        const resetPasswordForm = document.getElementById('reset-password-form');
+
+        // Simulate verification process
+        verificationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate successful verification
+            alert('Verification successful! Please reset your password.');
+            verificationForm.style.display = 'none';
+            resetPasswordForm.style.display = 'block';
+        });
+
+        resetPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle password reset
+            alert('Your password has been reset successfully!');
+            window.location.href = 'login.html';
+        });
+    </script>
+
+</body>
+</html>

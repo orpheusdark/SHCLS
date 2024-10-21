@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('00.jpeg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .booking-container {
+            background-color: rgba(255, 255, 255, 0.85); /* Translucent background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #007bff; /* Hospital blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 10px;
+        }
+
+        .step.active {
+            font-weight: bold;
+            color: #007bff; /* Active step color */
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        input[type="text"], input[type="date"], input[type="time"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #007bff; /* Hospital blue border */
+            border-radius: 5px;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus, select:focus {
+            border-color: #0056b3; /* Darker blue on focus */
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            width: 48%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.prev-btn {
+            float: left;
+        }
+
+        button.next-btn {
+            float: right;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* Hidden by default */
+        .form-step {
+            display: none;
+        }
+
+        /* Active step displayed */
+        .form-step.active {
+            display: block;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="booking-container">
+        <h1>Appointment Booking</h1>
+
+        <div class="step-indicator">
+            <div class="step active">Role</div>
+            <div class="step">Service</div>
+            <div class="step">Schedule</div>
+            <div class="step">Details</div>
+            <div class="step">Confirmation</div>
+        </div>
+
+        <form id="booking-form">
+            <!-- Step 1: Select Role -->
+            <div class="form-step active">
+                <div class="form-group">
+                    <label for="role">I am a:</label>
+                    <select id="role" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="staff">Healthcare Staff</option>
+                    </select>
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Service -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="service">Service Required:</label>
+                    <select id="service" required>
+                        <option value="" disabled selected>Select Service</option>
+                        <option value="consultation">Consultation</option>
+                        <option value="test">Diagnostic Test</option>
+                        <option value="treatment">Treatment</option>
+                    </select>
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="prev-btn" onclick="prevStep()">Back</button>
+                    <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Schedule Appointment -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="appointment-date">Select Date:</label>
+                    <input type="date" id="appointment-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-time">Select Time:</label>
+                    <input type="time" id="appointment-time" required>
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="prev-btn" onclick="prevStep()">Back</button>
+                    <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Patient Details -->
+            <div class="form-step">
+                <div class="form-group">
+                    <label for="patient-name">Full Name:</label>
+                    <input type="text" id="patient-name" placeholder="Enter Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="patient-contact">Contact Number:</label>
+                    <input type="text" id="patient-contact" placeholder="Enter Contact Number" required>
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="prev-btn" onclick="prevStep()">Back</button>
+                    <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Confirmation -->
+            <div class="form-step">
+                <h2>Confirm Your Appointment</h2>
+                <p>Please review your details before submitting.</p>
+                <div class="clearfix">
+                    <button type="button" class="prev-btn" onclick="prevStep()">Back</button>
+                    <button type="submit" class="next-btn">Confirm</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="footer">
+            &copy; 2024 HealthAxis. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        const formSteps = document.querySelectorAll(".form-step");
+        const steps = document.querySelectorAll(".step");
+        let currentStep = 0;
+
+        function updateStep() {
+            formSteps.forEach((formStep, index) => {
+                formStep.classList.toggle("active", index === currentStep);
+            });
+
+            steps.forEach((step, index) => {
+                step.classList.toggle("active", index === currentStep);
+            });
+        }
+
+        function nextStep() {
+            if (validateStep()) {
+                currentStep++;
+                updateStep();
+            }
+        }
+
+        function prevStep() {
+            currentStep--;
+            updateStep();
+        }
+
+        function validateStep() {
+            const activeStep = formSteps[currentStep];
+            const inputs = activeStep.querySelectorAll("input[required], select[required]");
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (!input.value) {
+                    valid = false;
+                    input.style.borderColor = "red";
+                } else {
+                    input.style.borderColor = "#007bff"; // Reset border color to blue
+                }
+            });
+
+            return valid;
+        }
+
+        // Handle form submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Appointment successfully booked!');
+        });
+    </script>
+</body>
+</html>
