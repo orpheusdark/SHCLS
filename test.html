@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Healthcare Locating System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background-color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .info-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .reviews {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review p {
+            margin: 5px 0;
+        }
+
+        .review strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Smart Healthcare Locating System</h1>
+        <p>Find the best healthcare facilities near you in real-time</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Features Overview Section -->
+        <section class="features">
+            <div class="feature">
+                <h3>Locate Nearest Providers</h3>
+                <p>Instantly find the nearest healthcare facilities based on your location and needs.</p>
+            </div>
+            <div class="feature">
+                <h3>Real-Time Wait Times</h3>
+                <p>Get real-time data on wait times at various healthcare centers to avoid long queues.</p>
+            </div>
+            <div class="feature">
+                <h3>Specialized Care Finder</h3>
+                <p>Search for facilities that offer specialized services like cardiology, oncology, and more.</p>
+            </div>
+            <div class="feature">
+                <h3>Reviews and Ratings</h3>
+                <p>Read reviews from other patients to choose the best healthcare providers for your needs.</p>
+            </div>
+            <div class="feature">
+                <h3>Availability & Facility Load</h3>
+                <p>Get up-to-date information on facility capacity and distribute the patient load evenly.</p>
+            </div>
+            <div class="feature">
+                <h3>Emergency Care Locator</h3>
+                <p>Quickly locate the nearest emergency room or ambulance service in case of a medical emergency.</p>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section>
+            <h2>Find Healthcare Providers Near You</h2>
+            <div class="map-container" id="map">
+                <!-- Interactive Map goes here -->
+                <p style="text-align:center; color: #555;">Map will be integrated here...</p>
+            </div>
+        </section>
+
+        <!-- Real-Time Information Section -->
+        <section class="info-section">
+            <h2>Real-Time Information</h2>
+            <p>Wait Times at Nearby Facilities:</p>
+            <ul>
+                <li>City Hospital: 15 minutes</li>
+                <li>Green Valley Clinic: 10 minutes</li>
+                <li>Sunrise Healthcare: 20 minutes</li>
+            </ul>
+        </section>
+
+        <!-- User Reviews Section -->
+        <section class="reviews">
+            <h2>Patient Reviews</h2>
+            <div class="review">
+                <p><strong>John Doe:</strong> "Great service! The wait time was minimal, and the staff was friendly."</p>
+            </div>
+            <div class="review">
+                <p><strong>Jane Smith:</strong> "I found the perfect specialist for my condition using this app. Very helpful!"</p>
+            </div>
+            <div class="review">
+                <p><strong>Michael Brown:</strong> "Being able to see real-time availability at different hospitals saved me a lot of time."</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Healthcare Locating System. All rights reserved.</p>
+        <p>Contact us: info@shcls.com | +1 234 567 890</p>
+    </footer>
+
+</body>
+</html>
