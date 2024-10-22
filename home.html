@@ -43,6 +43,27 @@
             color: #fff;
         }
 
+        .auth-buttons {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+        }
+
+        .auth-buttons a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #00b4d8;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #0077b6;
+        }
+
         h1 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -113,6 +134,15 @@
             .feature-box {
                 width: 100%;
             }
+
+            .auth-buttons {
+                top: 10px;
+                right: 10px;
+            }
+
+            .auth-buttons a {
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -121,6 +151,11 @@
     <div class="overlay"></div>
 
     <div class="container">
+        <div class="auth-buttons">
+            <a href="login.html">Login</a>
+            <a href="registration.html">Register</a>
+        </div>
+
         <h1>Welcome to HealthAxis</h1>
         <p>Your advanced platform for locating healthcare services, emergency care, and medical professionals with real-time data.</p>
 
